@@ -7,6 +7,7 @@
 +arg any: -D__CODE_GENERATOR__
 +arg any: -Wno-deprecated-declarations
 +arg any: -ferror-limit=0
++arg any: -DOCCGEOMETRY=1
 +arg win32: -fms-compatibility
 +arg win32: -fms-extensions
 +arg win32: -fms-compatibility-version=19
@@ -17,15 +18,28 @@
 # Immutable types -------------------------------------------------------------
 
 # Excluded modules ------------------------------------------------------------
+
+# Exclude netgen stuff...
+-module adtree
 -module adfront2
 -module adfront3
 -module autodiff
 -module bisect
+-module boundarylayer
 -module classifyhpel
 -module clusters
+-module curvedelems
+-module densemat
 -module findip
+-module geomsearch
+-module hprefinement
 -module nglib
 -module nginterface
+-module improve2
+-module improve3
+-module meshfunc
+-module smIdType
+
 
 # Excluded classes ------------------------------------------------------------
 -class ORB_INIT
@@ -43,6 +57,9 @@
 # VTK stuff needed
 -class SMDS_CellLinks
 -class SMDS_UnstructuredGrid
+
+
+-class NETGENPlugin_NetgenLibWrapper
 
 # Undefined typedef? FIXME
 -class NETGENPlugin_Remesher_2D
@@ -121,6 +138,7 @@
 
 # Headers ---------------------------------------------------------------------
 +header SMESH: bind_NCollection_Sequence.hxx
++header SMESH: bind_NCollection_Map.hxx
 +header SMESH: SMESH_ControlsDef.hxx
 
 +header SMESHDS: bind_NCollection_DataMap.hxx
@@ -139,9 +157,7 @@
 +header StdMeshers: bind_NCollection_IndexedMap.hxx
 +header StdMeshers: SMESH_Group.hxx
 
-+header NETGENPlugin: pySMESH_ng.hxx
 +header NETGENPlugin: SMESH_subMesh.hxx
-
 -header NETGENPlugin: NETGENPlugin_Hypothesis_i.hxx
 -header NETGENPlugin: NETGENPlugin_Hypothesis_2D_i.hxx
 -header NETGENPlugin: NETGENPlugin_Hypothesis_2D_ONLY_i.hxx

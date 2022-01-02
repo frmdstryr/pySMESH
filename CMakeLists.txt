@@ -29,7 +29,7 @@ option(ENABLE_WARNINGS "Disable warning output." OFF)
 # SETTINGS
 # --------------------------------------------------------------------------- #
 set(pySMESH_MAJOR_VERSION 9)
-set(pySMESH_MINOR_VERSION 6)
+set(pySMESH_MINOR_VERSION 7)
 set(pySMESH_PATCH_VERSION 0)
 set(pySMESH_TWEAK_VERSION 0)
 
@@ -57,7 +57,6 @@ if(NOT MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,-z,defs")
 endif()
-
 
 # --------------------------------------------------------------------------- #
 # PYTHON and PYBIND11
@@ -111,8 +110,10 @@ endif()
 include_directories(inc)
 if(NOT DEFINED OpenCASCADE_INCLUDE_DIR OR NOT DEFINED OpenCASCADE_LIBRARY_DIR)
     message(STATUS "Searching for OpenCASCADE...")
-    find_package(OpenCASCADE 7.5.2 REQUIRED)
+    find_package(OpenCASCADE 7.6.0 REQUIRED)
 endif()
+
+
 
 if(NOT EXISTS ${OpenCASCADE_INCLUDE_DIR})
     message(FATAL_ERROR "Failed to find OpenCASCADE include directory.")
@@ -146,26 +147,26 @@ include_directories(${VTK_INCLUDE_DIRS})
 # --------------------------------------------------------------------------- #
 set(SMESH_ABS_LIBS)
 message(STATUS "Searching for SMESH...")
-find_package(SMESH REQUIRED)
+find_package(SMESH 9.7.0 REQUIRED)
 
-if(NOT EXISTS ${SMESH_INCLUDE_PATH})
+if(NOT EXISTS ${SMESH_INCLUDE_DIR})
     message(FATAL_ERROR "Failed to find SMESH include directory.")
 endif()
 
-if(NOT EXISTS ${SMESH_LIB_PATH})
+if(NOT EXISTS ${SMESH_LIBRARY_DIR})
     message(FATAL_ERROR "Failed to find SMESH library directory.")
 endif()
-message(STATUS "SMESH include directory: ${SMESH_INCLUDE_PATH}")
-message(STATUS "SMESH library directory: ${SMESH_LIB_PATH}")
-include_directories(${SMESH_INCLUDE_PATH})
-link_directories(${SMESH_LIB_PATH})
+message(STATUS "SMESH include directory: ${SMESH_INCLUDE_DIR}")
+message(STATUS "SMESH library directory: ${SMESH_LIBRARY_DIR}")
+include_directories(${SMESH_INCLUDE_DIR})
+link_directories(${SMESH_LIBRARY_DIR})
 
 # Include each subdir
-FILE(GLOB SMESH_INCLUDE_SUBDIRS RELATIVE ${SMESH_INCLUDE_PATH} ${SMESH_INCLUDE_PATH}/*)
-foreach(SUBDIR ${SMESH_INCLUDE_SUBDIRS})
-    message(STATUS "SMESH include ${SMESH_INCLUDE_PATH}/${SUBDIR}")
-    include_directories("${SMESH_INCLUDE_PATH}/${SUBDIR}")
-endforeach(SUBDIR)
+#FILE(GLOB SMESH_INCLUDE_SUBDIRS RELATIVE ${SMESH_INCLUDE_PATH} ${SMESH_INCLUDE_PATH}/*)
+#foreach(SUBDIR ${SMESH_INCLUDE_SUBDIRS})
+#    message(STATUS "SMESH include ${SMESH_INCLUDE_PATH}/${SUBDIR}")
+#    include_directories("${SMESH_INCLUDE_PATH}/${SUBDIR}")
+#endforeach(SUBDIR)
 
 # Build full library paths since they have the same name as the Python
 # libraries
@@ -217,11 +218,13 @@ endif()
 # ----------------------------------------------------------------------- #
 # NETGEN
 # ----------------------------------------------------------------------- #
-message(STATUS "Searching for Netgen...")
-find_package(Netgen REQUIRED)
-
+#message(STATUS "Searching for Netgen...")
+#find_package(Netgen REQUIRED)
+set(NETGEN_INCLUDE_DIR "${SMESH_INCLUDE_DIR}/Netgen")
 message(STATUS "Netgen include directory: ${NETGEN_INCLUDE_DIR}")
 include_directories(${NETGEN_INCLUDE_DIR})
+include_directories("${NETGEN_INCLUDE_DIR}/include")
+include_directories("${NETGEN_INCLUDE_DIR}/meshing")
 
 set(Netgen_LIBRARIES "nglib4smesh")
 

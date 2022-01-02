@@ -25,6 +25,8 @@ def find_include_path(name, path, parent=False):
     :return: The full path to the directory of the given header file.
     """
     for root, dirs, files in os.walk(path):
+        if "pkgs" in root:
+            continue  # Skip conda's cached package downloads
         if name in files:
             return os.path.dirname(root) if parent else root
 
@@ -227,16 +229,23 @@ def main():
         raise NotADirectoryError("clangdev not found: {}".format(clang_include_path))
 
     # Gather all the includes for the parser
-    other_includes = [i for i in [smesh_include_path, occt_include_path, vtk_include_path, tbb_include_path, clang_include_path] if i]
-
+    all_include_dirs = [i for i in [smesh_include_path, occt_include_path, vtk_include_path, tbb_include_path, clang_include_path] if i]
 
     # Add extra includes for missing OCCT headers that cause issues during parsing
-    other_includes.append(os.path.join(BINDER_ROOT, 'extra_includes'))
+    all_include_dirs.append(os.path.join(BINDER_ROOT, 'extra_includes'))
 
     print('\nGenerating all_includes.h file...')
     smesh_mods, netgen_mods, occt_mods, include_dirs, all_includes = gen_includes(
         smesh_include_path, netgen_include_path, occt_include_path, BINDER_ROOT)
-    other_includes.extend(include_dirs)
+    all_include_dirs.extend(include_dirs)
+
+    #print("Include dirs:")
+    #for d in include_dirs:
+    #    print(d)
+
+    #print("All includes:")
+    #for d in all_includes:
+    #    print(d)
 
     # Initialize the main binding generation tool
     gen = Generator(
@@ -247,7 +256,7 @@ def main():
             'netgen': netgen_mods,
         },
         all_includes=all_includes,
-        main_includes=other_includes
+        include_dirs=all_include_dirs
     )
 
     # Output bindings path
