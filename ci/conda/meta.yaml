@@ -18,14 +18,16 @@ requirements:
     - python
     - pybind11
     - occt=7.6.0
-    - smesh=9.7.0.1
+    - pyocct=7.6.0
+    - smesh=9.7.0.2
     - tbb-devel
     - boost-cpp
 
   run:
     - python
     - occt=7.6.0
-    - smesh=9.7.0.1
+    - pyocct=7.6.0
+    - smesh=9.7.0.2
     - boost-cpp
 
 test:
