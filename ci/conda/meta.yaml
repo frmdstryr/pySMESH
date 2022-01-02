@@ -17,15 +17,15 @@ requirements:
   host:
     - python
     - pybind11
-    - occt
-    - smesh
+    - occt=7.6.0
+    - smesh=9.7.0.1
     - tbb-devel
     - boost-cpp
 
   run:
     - python
-    - occt
-    - smesh
+    - occt=7.6.0
+    - smesh=9.7.0.1
     - boost-cpp
 
 test:
