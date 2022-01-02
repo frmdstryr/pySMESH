@@ -19,14 +19,12 @@ requirements:
     - pybind11
     - occt
     - smesh
-    - netgen
     - tbb-devel
     - boost-cpp
 
   run:
     - python
     - occt
-    - netgen
     - smesh
     - boost-cpp
 

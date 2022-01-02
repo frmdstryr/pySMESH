@@ -122,7 +122,7 @@ jobs:
       fail-fast: false
       matrix:
         os: ['ubuntu-latest']
-        python-version: ['3.6', '3.7', '3.8', '3.9']
+        python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
     steps:
 
       - name: "Install OpenGL"
@@ -159,7 +159,7 @@ jobs:
         shell: pwsh
         run: |
           mkdir conda
-          conda build  ci/conda -c conda-forge -c trelau --python ${{ matrix.python-version }} --output-folder conda
+          conda build  ci/conda -c conda-forge -c codelv --python ${{ matrix.python-version }} --output-folder conda
 
       - name: "Upload conda package"
         uses: actions/upload-artifact@v2
