@@ -459,3 +459,6 @@
 
 # TODO: Support rv policy for binder?
 +patch bind__ChunkIterator: &_ChunkIterator<ELEM_ITERATOR, RANGE_SET>::next, "None");-->&_ChunkIterator<ELEM_ITERATOR, RANGE_SET>::next, "None", py::return_value_policy::reference);
+
+# Remove duplicate base
++patch bind_SMDS_Ptr: py::class_<SMDS_Ptr<T>, std::unique_ptr<T>>-->py::class_<SMDS_Ptr<T>>
