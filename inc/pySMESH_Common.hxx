@@ -30,10 +30,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <boost/shared_ptr.hpp>
 
+#include <pyOCCT_Common.hxx>
+
 namespace py = pybind11;
 
-// Use opencascade::handle as holder type for Standard_Transient types
-PYBIND11_DECLARE_HOLDER_TYPE(T, opencascade::handle<T>, true);
 
 // Use boost::shared_ptr for some SMESH iterators
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);

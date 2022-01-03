@@ -172,7 +172,9 @@
 +header SMESH: bind_NCollection_Sequence.hxx
 +header SMESH: bind_NCollection_Map.hxx
 +header SMESH: SMESH_ControlsDef.hxx
++header SMESH: gp.cxx
 
++header SMESHDS: NCollection.cxx
 +header SMESHDS: bind_NCollection_DataMap.hxx
 
 +header SMDS: vtkType.h
