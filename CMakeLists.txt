@@ -167,11 +167,11 @@ include_directories(${SMESH_INCLUDE_DIR})
 link_directories(${SMESH_LIBRARY_DIR})
 
 # Include each subdir
-FILE(GLOB SMESH_INCLUDE_SUBDIRS RELATIVE ${SMESH_INCLUDE_PATH} ${SMESH_INCLUDE_PATH}/*)
-foreach(SUBDIR ${SMESH_INCLUDE_SUBDIRS})
-    message(STATUS "SMESH include ${SMESH_INCLUDE_PATH}/${SUBDIR}")
-    include_directories("${SMESH_INCLUDE_PATH}/${SUBDIR}")
-endforeach(SUBDIR)
+#FILE(GLOB SMESH_INCLUDE_SUBDIRS RELATIVE ${SMESH_INCLUDE_PATH} ${SMESH_INCLUDE_PATH}/*)
+#foreach(SUBDIR ${SMESH_INCLUDE_SUBDIRS})
+    #message(STATUS "SMESH include ${SMESH_INCLUDE_PATH}/${SUBDIR}")
+    #include_directories("${SMESH_INCLUDE_PATH}/${SUBDIR}")
+#endforeach(SUBDIR)
 
 # Build full library paths since they have the same name as the Python
 # libraries
