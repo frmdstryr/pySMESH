@@ -58,6 +58,11 @@ if(NOT MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,-z,defs")
 endif()
 
+# Force C++ 17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 # --------------------------------------------------------------------------- #
 # PYTHON and PYBIND11
 # --------------------------------------------------------------------------- #
