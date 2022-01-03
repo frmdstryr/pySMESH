@@ -225,8 +225,14 @@
 -field _ChunkIterator::myRanges
 
 # Excluded imports ------------------------------------------------------------
+-import Driver: smIdType
 -import SMDS: SMESHDS
+-import SMDS: smIdType
 -import SMESH: StdMeshers
+-import SMESH: smIdType
+-import SMESHDS: smIdType
+-import StdMeshers: smIdType
+-import NETGENPlugin: smIdType
 
 # Wtf??
 -import NETGENPlugin: meshclass
