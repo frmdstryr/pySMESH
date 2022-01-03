@@ -21,22 +21,23 @@ from SMESH.NETGENPlugin import (NETGENPlugin_SimpleHypothesis_3D,
                                 NETGENPlugin_NETGEN_2D3D)
 from SMESH.SMESH import SMESH_Gen
 
-from SMESH.Visualization.MeshViewerWx import MeshViewerWx
+#from SMESH.Visualization.MeshViewerWx import MeshViewerWx as MeshViewer
+from SMESH.Visualization.MeshViewerQt import MeshViewerQt as MeshViewer
 
 fn = './models/shape_names.step'
 shape = ExchangeBasic.read_step(fn)
 
-v = MeshViewerWx()
-v.add(shape)
-v.start()
+#v = MeshViewer()
+#v.add(shape)
+#v.start()
 
 gen = SMESH_Gen()
-mesh = gen.CreateMesh(0, True)
+mesh = gen.CreateMesh(True)
 
-hyp = NETGENPlugin_SimpleHypothesis_3D(0, 0, gen)
+hyp = NETGENPlugin_SimpleHypothesis_3D(0, gen)
 hyp.SetLocalLength(5)
 
-alg = NETGENPlugin_NETGEN_2D3D(1, 0, gen)
+alg = NETGENPlugin_NETGEN_2D3D(1, gen)
 
 mesh.ShapeToMesh(shape)
 mesh.AddHypothesis(shape, 0)
@@ -46,6 +47,6 @@ print('Computing mesh...')
 done = gen.Compute(mesh, mesh.GetShapeToMesh())
 print('done.')
 
-v = MeshViewerWx()
+v = MeshViewer()
 v.add(mesh)
 v.start()

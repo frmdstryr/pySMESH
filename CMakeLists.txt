@@ -220,6 +220,7 @@ endif()
 # ----------------------------------------------------------------------- #
 #message(STATUS "Searching for Netgen...")
 #find_package(Netgen REQUIRED)
+add_definitions(-DOCCGEOMETRY)
 set(NETGEN_INCLUDE_DIR "${SMESH_INCLUDE_DIR}/Netgen")
 message(STATUS "Netgen include directory: ${NETGEN_INCLUDE_DIR}")
 include_directories(${NETGEN_INCLUDE_DIR})

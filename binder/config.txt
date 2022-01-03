@@ -124,6 +124,38 @@
 -function SMESH_MeshEditor::Offset
 -function SMESH_Pattern::GetInOutNodes
 
+# TODO: Support stl container arguments
+# or re-add patch to keep args with stl so pybind can handle it
+-function SMESHDS_Mesh::AddPolygonalFaceWithID
+-function SMESHDS_Mesh::AddQuadPolygonalFaceWithID
+-function SMESHDS_Mesh::AddPolyhedralVolumeWithID
+-function SMDS_VolumeTool::GetFaceIndex
+-function SMESH_Algo::GetSortedNodesOnEdge_
+-function SMESH_Pattern::Apply
+-function SMESH_Mesh::GetHypotheses
+-function SMESH_Block::ShellPoint_
+-function SMESH_Block::GetOrderedEdges_
+-function SMESH_MeshEditor::AddElement
+-function SMESH_MeshEditor::Smooth
+-function SMESH_MeshEditor::InsertNodesIntoLink
+-function SMESH_MeshEditor::ReplaceElemInGroups_
+-function SMESH_MeshEditor::DoubleNodes
+-function SMESH_MesherHelper::AddPolyhedralVolume
+-function SMESH_MesherHelper::GetNodeU
+-function SMESH_MesherHelper::AddPolygonalFace
+-function SMESH_MesherHelper::LoadNodeColumns_
+-function SMESH_OctreeNode::NodesAround
+-function SMESH_OctreeNode::AllNodesAround
+-function StdMeshers_CartesianParameters3D::ComputeCoordinates_
+-function StdMeshers_FaceSide::New_
+-function StdMeshers_FaceSide::GetEdgeNodes
+-function NETGENPlugin_Mesher::PrepareOCCgeometry_
+-function NETGENPlugin_Mesher::FillSMesh_
+-function NETGENPlugin_Mesher::FillNgMesh
+-function NETGENPlugin_Mesher::AddSegmentsToMesh_
+# TODO: END Support stl container arguments
+
+
 -function SMESH_subMesh::DependsOn()
 
 -function StdMeshers_FaceSide::StdMeshers_FaceSide(const TopoDS_Face &, const int &, SMESH_Mesh *, const bool, const bool, SMESH_MesherHelper *)
@@ -157,6 +189,10 @@
 +header StdMeshers: bind_NCollection_IndexedMap.hxx
 +header StdMeshers: SMESH_Group.hxx
 
++header NETGENPlugin: core/ngcore.hpp
++header NETGENPlugin: include/nginterface_v2.hpp
++header NETGENPlugin: occ/occgeom.hpp
++header NETGENPlugin: meshing/meshing.hpp
 +header NETGENPlugin: SMESH_subMesh.hxx
 -header NETGENPlugin: NETGENPlugin_Hypothesis_i.hxx
 -header NETGENPlugin: NETGENPlugin_Hypothesis_2D_i.hxx

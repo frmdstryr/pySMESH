@@ -21,24 +21,25 @@ from SMESH.NETGENPlugin import (NETGENPlugin_SimpleHypothesis_2D,
                                 NETGENPlugin_NETGEN_2D)
 from SMESH.SMESH import SMESH_Gen, SMESH_Mesh
 
-from SMESH.Visualization.MeshViewerWx import MeshViewerWx
+#from SMESH.Visualization.MeshViewerWx import MeshViewerWx as MeshViewer
+from SMESH.Visualization.MeshViewerQt import MeshViewerQt as MeshViewer
 
 fn = './models/wingbox.brep'
 shape = ExchangeBasic.read_brep(fn)
 
-v = MeshViewerWx()
-v.add(shape)
-v.start()
+#v = MeshViewer()
+#v.add(shape)
+#v.start()
 
 gen = SMESH_Gen()
-mesh = gen.CreateMesh(0, True)
+mesh = gen.CreateMesh(True)
 assert isinstance(mesh, SMESH_Mesh)
 
-hyp2d = NETGENPlugin_SimpleHypothesis_2D(0, 0, gen)
+hyp2d = NETGENPlugin_SimpleHypothesis_2D(0, gen)
 hyp2d.SetAllowQuadrangles(True)
 hyp2d.SetLocalLength(4.0)
 
-alg2d = NETGENPlugin_NETGEN_2D(1, 0, gen)
+alg2d = NETGENPlugin_NETGEN_2D(1, gen)
 
 mesh.ShapeToMesh(shape)
 mesh.AddHypothesis(shape, 0)
@@ -49,6 +50,6 @@ done = gen.Compute(mesh, mesh.GetShapeToMesh())
 assert done
 print('done.')
 
-v = MeshViewerWx()
+v = MeshViewer()
 v.add(mesh)
 v.start()
