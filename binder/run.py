@@ -66,7 +66,7 @@ def gen_netgen_includes(netgen_include_path):
     all_includes = []
 
     # Header files to ignore
-    ignored_includes = []
+    ignored_includes = ['geoml.hpp']
 
     headers = ['.hpp']
 
@@ -85,6 +85,7 @@ def gen_netgen_includes(netgen_include_path):
             all_includes.append(item)
     assert all_includes, "Netgen path is invalid"
     netgen_mods = ['OCCGeometry', 'Mesh']
+
     return netgen_mods, include_dirs, all_includes
 
 
@@ -187,6 +188,7 @@ def main():
 
     # Attempt to find include directories by searching for a known header file. Will likely
     # need to make this more robust.
+    pysmesh_include_path = os.path.join(os.path.dirname(BINDER_ROOT), 'inc')
     occt_include_path = find_include_path('Standard.hxx', conda_prefix)
     pyocct_root = os.path.join(os.path.dirname(BINDER_ROOT), 'pyOCCT')
     pyocct_include_path = find_include_path('pyOCCT_Common.hxx', pyocct_root)
@@ -238,14 +240,7 @@ def main():
     smesh_mods, netgen_mods, occt_mods, include_dirs, all_includes = gen_includes(
         smesh_include_path, netgen_include_path, occt_include_path, BINDER_ROOT)
     all_include_dirs.extend(include_dirs)
-
-    #print("Include dirs:")
-    #for d in include_dirs:
-    #    print(d)
-
-    #print("All includes:")
-    #for d in all_includes:
-    #    print(d)
+    all_include_dirs.append(pysmesh_include_path)
 
     # Initialize the main binding generation tool
     gen = Generator(

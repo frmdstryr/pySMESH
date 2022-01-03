@@ -167,11 +167,11 @@ include_directories(${SMESH_INCLUDE_DIR})
 link_directories(${SMESH_LIBRARY_DIR})
 
 # Include each subdir
-#FILE(GLOB SMESH_INCLUDE_SUBDIRS RELATIVE ${SMESH_INCLUDE_PATH} ${SMESH_INCLUDE_PATH}/*)
-#foreach(SUBDIR ${SMESH_INCLUDE_SUBDIRS})
-#    message(STATUS "SMESH include ${SMESH_INCLUDE_PATH}/${SUBDIR}")
-#    include_directories("${SMESH_INCLUDE_PATH}/${SUBDIR}")
-#endforeach(SUBDIR)
+FILE(GLOB SMESH_INCLUDE_SUBDIRS RELATIVE ${SMESH_INCLUDE_PATH} ${SMESH_INCLUDE_PATH}/*)
+foreach(SUBDIR ${SMESH_INCLUDE_SUBDIRS})
+    message(STATUS "SMESH include ${SMESH_INCLUDE_PATH}/${SUBDIR}")
+    include_directories("${SMESH_INCLUDE_PATH}/${SUBDIR}")
+endforeach(SUBDIR)
 
 # Build full library paths since they have the same name as the Python
 # libraries
@@ -182,7 +182,7 @@ list(APPEND SMESH_LIBRARIES "Kernel")
 foreach(LIB ${SMESH_LIBRARIES})
     message(STATUS "SMESH library: ${LIB}")
     set(FOUND_LIB "FOUND_LIB-NOTFOUND")
-    find_library(FOUND_LIB ${LIB} PATHS ${SMESH_LIB_PATH})
+    find_library(FOUND_LIB ${LIB} PATHS ${SMESH_LIBRARY_DIR})
     message(STATUS "SMESH found library: ${FOUND_LIB}")
     list(APPEND SMESH_ABS_LIBS ${FOUND_LIB})
 endforeach(LIB)
