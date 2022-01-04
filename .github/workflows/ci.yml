@@ -63,7 +63,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: pyocct_src_${{ matrix.os }}
-          path: pyOCCT/src
+          path: |
+            pyOCCT/src
+            pyOCCT/inc
   generate_win:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     name: Generate (${{ matrix.os }})
@@ -112,7 +114,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: pyocct_src_${{ matrix.os }}
-          path: pyOCCT/src
+          path: |
+            pyOCCT/src
+            pyOCCT/inc
   build_linux:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     name: Build (${{ matrix.python-version }}, ${{ matrix.os }})
@@ -154,7 +158,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: pyocct_src_${{ matrix.os }}
-          path: pyOCCT/src
+          path: pyOCCT
       - name: "Run conda build"
         shell: pwsh
         run: |
@@ -204,7 +208,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: pyocct_src_${{ matrix.os }}
-          path: pyOCCT/src
+          path: pyOCCT
       - name: "Run conda build"
         shell: bash -l {0}
         run: |
