@@ -79,6 +79,8 @@
 
 # Excluded typedefs -----------------------------------------------------------
 -typedef TBlockShapes
+-typedef TIDsSeq
+-typedef TIDsMap
 
 
 # Excluded functions ----------------------------------------------------------
