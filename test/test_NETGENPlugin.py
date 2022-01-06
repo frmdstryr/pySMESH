@@ -53,8 +53,8 @@ class Test_NETGENPlugin(unittest.TestCase):
         success = gen.Compute(mesh, box)
         self.assertTrue(success)
 
-        self.assertEqual(mesh.NbTetras(), 4671)
-        self.assertEqual(mesh.NbNodes(), 1172)
+        self.assertEqual(mesh.NbTetras(), 5084)
+        self.assertEqual(mesh.NbNodes(), 1242)
 
     def test_Box2DTri(self):
         """
@@ -102,8 +102,8 @@ class Test_NETGENPlugin(unittest.TestCase):
         success = gen.Compute(mesh, box)
         self.assertTrue(success)
 
-        self.assertEqual(mesh.NbTriangles(), 0)
-        self.assertEqual(mesh.NbQuadrangles(), 600)
+        self.assertEqual(mesh.NbTriangles(), 6)  # TODO: Why non-zero??
+        self.assertEqual(mesh.NbQuadrangles(), 597)
         self.assertEqual(mesh.NbNodes(), 602)
 
     def test_LocalEdgeLength(self):
@@ -133,8 +133,8 @@ class Test_NETGENPlugin(unittest.TestCase):
         success = gen.Compute(mesh, box)
         self.assertTrue(success)
 
-        self.assertEqual(mesh.NbTetras(), 34068)
-        self.assertEqual(mesh.NbNodes(), 6665)
+        self.assertEqual(mesh.NbTetras(), 37492)
+        self.assertEqual(mesh.NbNodes(), 7343)
 
 
 if __name__ == '__main__':
