@@ -17,7 +17,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 cmake_minimum_required(VERSION 3.15...3.20)
-project(pySMESH VERSION 9.7.0 LANGUAGES C CXX)
+project(pySMESH VERSION 9.8.0 LANGUAGES C CXX)
 
 
 # --------------------------------------------------------------------------- #
@@ -29,7 +29,7 @@ option(ENABLE_WARNINGS "Disable warning output." OFF)
 # SETTINGS
 # --------------------------------------------------------------------------- #
 set(pySMESH_MAJOR_VERSION 9)
-set(pySMESH_MINOR_VERSION 7)
+set(pySMESH_MINOR_VERSION 8)
 set(pySMESH_PATCH_VERSION 0)
 set(pySMESH_TWEAK_VERSION 0)
 
@@ -115,7 +115,7 @@ endif()
 include_directories(inc)
 if(NOT DEFINED OpenCASCADE_INCLUDE_DIR OR NOT DEFINED OpenCASCADE_LIBRARY_DIR)
     message(STATUS "Searching for OpenCASCADE...")
-    find_package(OpenCASCADE 7.6.0 REQUIRED)
+    find_package(OpenCASCADE 7.6.1 REQUIRED)
 endif()
 
 
@@ -152,7 +152,7 @@ include_directories(${VTK_INCLUDE_DIRS})
 # --------------------------------------------------------------------------- #
 set(SMESH_ABS_LIBS)
 message(STATUS "Searching for SMESH...")
-find_package(SMESH 9.7.0 REQUIRED)
+find_package(SMESH 9.8.0 REQUIRED)
 
 if(NOT EXISTS ${SMESH_INCLUDE_DIR})
     message(FATAL_ERROR "Failed to find SMESH include directory.")
