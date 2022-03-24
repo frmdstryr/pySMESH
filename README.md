@@ -38,3 +38,13 @@ After the binding sources are generated:
 
 Note that `PTHREAD_INCLUDE_DIR` will likely need defined manually since it cannot typically not be
 automatically found by CMake.
+
+## Updating for new version
+
+When updating to a new version of OCCT/SMESH please ensure the versions are
+updated in the following files:
+
+- ci/conda/meta.yaml
+- binder/environment.yml
+- CMakeLists.txt (project version, settings, and OCCT required version)
+- SMESH/__init__.py

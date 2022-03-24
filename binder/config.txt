@@ -39,7 +39,7 @@
 -module improve3
 -module meshfunc
 -module smIdType
-
+-module PythonCppUtils
 
 # Excluded classes ------------------------------------------------------------
 -class ORB_INIT

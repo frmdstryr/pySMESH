@@ -3,4 +3,6 @@
 	url = https://github.com/frmdstryr/pyOCCT_binder
 [submodule "pyOCCT"]
 	path = pyOCCT
-	url = https://github.com/trelau/pyOCCT
+	url = https://github.com/frmdstryr/pyOCCT
+	branch = 7.6.1
+
