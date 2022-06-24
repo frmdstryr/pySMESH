@@ -1,6 +1,6 @@
 package:
   name: pysmesh
-  version: 9.8.0
+  version: 9.9.0
 
 source:
   path: ../..
@@ -13,20 +13,18 @@ requirements:
     - {{ compiler('cxx') }}  # [win]
     - cmake
     - ninja
-    - boost-cpp=1.74
+    - boost-cpp ==1.74
 
   host:
     - python
     - pybind11
-    - occt=7.6.1
-    - pyocct=7.6.1
-    - smesh=9.8.0
+    - pyocct ==7.6.2
+    - smesh ==9.9.0
     - tbb-devel
   run:
     - python
-    - occt=7.6.1
-    - pyocct=7.6.1
-    - smesh=9.8.0
+    - pyocct ==7.6.2
+    - smesh ==9.9.0
 
 test:
   source_files:

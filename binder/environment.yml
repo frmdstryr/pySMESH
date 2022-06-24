@@ -6,6 +6,6 @@ dependencies:
   - python
   - clangdev
   - python-clang
-  - occt=7.6.1
-  - smesh=9.8.0
+  - occt=7.6.2
+  - smesh=9.9.0
   - tbb-devel
