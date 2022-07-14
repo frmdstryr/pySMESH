@@ -1,7 +1,7 @@
 name: binder
 channels:
-  - conda-forge
   - codelv
+  - conda-forge
 dependencies:
   - python
   - clangdev
