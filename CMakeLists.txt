@@ -115,7 +115,7 @@ endif()
 include_directories(inc)
 if(NOT DEFINED OpenCASCADE_INCLUDE_DIR OR NOT DEFINED OpenCASCADE_LIBRARY_DIR)
     message(STATUS "Searching for OpenCASCADE...")
-    find_package(OpenCASCADE 7.6.2 REQUIRED)
+    find_package(OpenCASCADE 7.6.3 REQUIRED)
 endif()
 
 

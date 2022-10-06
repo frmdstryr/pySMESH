@@ -6,7 +6,7 @@ source:
   path: ../..
 
 build:
-  number: 0
+  number: 100
 
 requirements:
   build:
@@ -18,12 +18,12 @@ requirements:
   host:
     - python
     - pybind11
-    - pyocct ==7.6.2
+    - pyocct ==7.6.3
     - smesh ==9.9.0
     - tbb-devel
   run:
     - python
-    - pyocct ==7.6.2
+    - pyocct ==7.6.3
     - smesh ==9.9.0
 
 test:
