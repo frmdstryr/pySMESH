@@ -13,7 +13,7 @@ requirements:
     - {{ compiler('cxx') }}  # [win]
     - cmake
     - ninja
-    - boost-cpp ==1.74
+    - boost-cpp ==1.78
 
   host:
     - python
